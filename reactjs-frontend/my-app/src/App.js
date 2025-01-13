@@ -1,0 +1,24 @@
+import React from 'react';
+import './App.css'
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import Login from './pages/login/Login';
+import Register from './pages/register/Register';
+import Dashboard from './pages/dashboard/Dashboard';
+import PrivateRoute from './navigation/AuthNavigation';
+
+function App() {
+  return (
+    <Router>
+      <div className="app">
+        <Routes>
+          <Route path="/" element={<Navigate to="/login" />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Register />} />
+          <Route path="/dashboard" element={<PrivateRoute element={<Dashboard />} />} />
+        </Routes>
+      </div>
+    </Router>
+  );
+}
+
+export default App;
